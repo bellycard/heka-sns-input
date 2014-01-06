@@ -4,7 +4,8 @@ A Mozilla Heka Input for Amazon Web Services SNS.
 
 The Amazon SNS input will start a webserver on the given port and act as an endpoint for consuming topic messages per the [API instructions](http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html).
 
-Messages generated from the Amazon SNS Input will have a message type of `amazon.sns`.
+Notification messages generated from the Amazon SNS Input will have a message type of `amazon.sns.notification`.
+Subscription messages `amazon.sns.subscription` and unsubscribe notifications `amazon.sns.unsubscribe`.
 
 # Installation
 
