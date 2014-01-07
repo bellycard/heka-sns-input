@@ -143,7 +143,7 @@ func (si *AmazonSnsInput) MessageHandler(w http.ResponseWriter, req *http.Reques
 		si.ir.Inject(pack)
 
 		// Verify subscription with Amazon SNS
-		resp, err := http.Get(m.SubscribeURL)
+		_, err := http.Get(m.SubscribeURL)
 		if err != nil {
 			si.ir.LogError(fmt.Errorf("[AmazonSnsInput] [%s]", err.Error()))
 		}
