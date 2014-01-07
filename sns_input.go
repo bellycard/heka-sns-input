@@ -144,13 +144,10 @@ func (si *AmazonSnsInput) MessageHandler(w http.ResponseWriter, req *http.Reques
 
 		// Verify subscription with Amazon SNS
 		resp, err := http.Get(m.SubscribeURL)
-		// Consume HTTP response body
-		body, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
 			si.ir.LogError(fmt.Errorf("[AmazonSnsInput] [%s]", err.Error()))
 		}
 		si.ir.LogMessage(fmt.Sprintf("[AmazonSnsInput Subscribed] Topic[%s]", m.TopicArn))
-		resp.Body.Close()
 	case "UnsubscribeConfirmation":
 		// Handle unsubscribe logic
 		si.ir.LogMessage(fmt.Sprintf("[AmazonSnsInput Unsubscribe] Topic[%s]", m.TopicArn))
