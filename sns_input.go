@@ -271,12 +271,7 @@ func (si *AmazonSnsInput) Run(ir InputRunner, h PluginHelper) (err error) {
 		return fmt.Errorf("[AmazonSnsInput] Serve fail: %s\n", err.Error())
 	}
 
-	for {
-		select {
-		case <-si.stopChan:
-			return
-		}
-	}
+	<-si.stopChan
 
 	return nil
 }
